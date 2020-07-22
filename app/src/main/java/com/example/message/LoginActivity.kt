@@ -13,13 +13,17 @@ class LoginActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        back_to_login.setOnClickListener {
-            Log.d("LoginActivity", "Try to show Main activity")
-            //Launch the login activty
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        regd_login.setOnClickListener {
+            val email =regd_email.text.toString()
+            val password = regd_password.text.toString()
+            Log.d("Login", "Attempt to login with email/pw: $email/***")
 
+        }
 
+        back_to_reg.setOnClickListener {
+            Log.d("back to reg","show main activity")
+            Log.d("MainActivity", "Email is: " )
+            finish()
         }
     }
 }
