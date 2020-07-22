@@ -48,6 +48,7 @@
         android:bottomLeftRadius="10dp"
         android:bottomRightRadius="10dp"
         android:text="Login"
+        android:textSize="18sp"
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/regd_password"
@@ -70,17 +71,17 @@
         android:id="@+id/goodtosee"
         android:layout_width="320dp"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:text="Glad to see you back"
+        android:layout_marginTop="75dp"
+        android:text="Glad to have you back"
         android:textAlignment="center"
         android:textColor="#6AC8D5"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/regd_login"
         app:layout_constraintStart_toStartOf="@+id/regd_login"
-        app:layout_constraintTop_toBottomOf="@+id/back_to_login" />
+        app:layout_constraintTop_toBottomOf="@+id/back_to_reg" />
 
     <TextView
-        android:id="@+id/Title"
+        android:id="@+id/Title2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="63dp"
@@ -94,7 +95,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pp"
+        android:id="@+id/privacy_policy2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="46dp"
