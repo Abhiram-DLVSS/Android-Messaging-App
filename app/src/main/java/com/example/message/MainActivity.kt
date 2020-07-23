@@ -23,11 +23,12 @@ class MainActivity : AppCompatActivity() {
         reg_button.setOnClickListener {
             val email = email_edit_reg.text.toString()
             val password = password_edit_reg.text.toString()
+            //If user left the fields empty
             if(email.isEmpty()||password.isEmpty()) {
                 Toast.makeText(this, "Please enter text in empty fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
+            //debugging messages
             Log.d("MainActivity", "Email is: " + email )
             Log.d( "MainActivity", "Password: $password" )
             //Firebase incoming
@@ -43,26 +44,26 @@ class MainActivity : AppCompatActivity() {
 
                 }
         }
-        already_have_an_account.setOnClickListener {
+            //If we tap on Already have an account?
+            already_have_an_account.setOnClickListener {
             Log.d("MainActivity","Try to show login activity")
             //Launch the login activty
             val intent = Intent( this, LoginActivity::class.java)
             startActivity(intent)
-
-        }
-
-        val privacyPolicy = this.findViewById<TextView>(R.id.privacy_policy)
-        privacyPolicy.setOnClickListener {
+            }
+            // Redirecting to github when taped on Privacy policy
+            val privacyPolicy = this.findViewById<TextView>(R.id.privacy_policy)
+            privacyPolicy.setOnClickListener {
             val viewIntent = Intent("android.intent.action.VIEW",
             Uri.parse("https://github.com/Abhiram-DLVSS/Android-Messaging-App/blob/master/README.md"));
             startActivity(viewIntent)
-        }
-
-        val learn = this.findViewById<TextView>(R.id.learn)
-        learn.setOnClickListener {
+            }
+            // Redirecting to github when taped on Learn more
+            val learn = this.findViewById<TextView>(R.id.learn)
+            learn.setOnClickListener {
             val viewIntent = Intent("android.intent.action.VIEW",
-                Uri.parse("https://github.com/Abhiram-DLVSS/Android-Messaging-App/blob/master/README.md"));
+            Uri.parse("https://github.com/Abhiram-DLVSS/Android-Messaging-App/blob/master/README.md"));
             startActivity(viewIntent)
-        }
+            }
     }
 }

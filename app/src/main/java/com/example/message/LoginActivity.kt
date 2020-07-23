@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class LoginActivity:AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -29,8 +30,9 @@ class LoginActivity:AppCompatActivity() {
         back_to_reg.setOnClickListener {
             Log.d("back to reg","show main activity")
             Log.d("MainActivity", "Email is: " )
-            finish()
+            finish()//back to main activity
         }
+        // Redirecting to github when taped on Privacy policy
         val privacyPolicy = this.findViewById<TextView>(R.id.privacy_policy2)
         privacyPolicy.setOnClickListener {
             val viewIntent = Intent("android.intent.action.VIEW",
