@@ -29,7 +29,7 @@ class LoginActivity:AppCompatActivity() {
 
         back_to_reg.setOnClickListener {
             Log.d("back to reg","show main activity")
-            Log.d("MainActivity", "Email is: " )
+            Log.d("RegisterActivity", "Email is: " )
             finish()//back to main activity
         }
         // Redirecting to github when taped on Privacy policy
