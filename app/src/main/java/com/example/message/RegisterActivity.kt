@@ -7,15 +7,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 
@@ -23,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
 
 
         reg_button.setOnClickListener {
@@ -42,11 +40,11 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
                     //ele if success
-                    Log.d("Main", "Successful created using uid: ${it?.result?.user?.uid}")
+                    Log.d("RegisterActivity", "Successful created using uid: ${it?.result?.user?.uid}")
                     uploadImageToFirebaseStorage()
                 }
                 .addOnFailureListener {
-                    Log.d("Main", "failed to create user:${it.message}")
+                    Log.d("RegisterActivity", "failed to create user:${it.message}")
                     Toast.makeText(this, "Please check the Mail ID and Password should be greater than 6 alphanumericals", Toast.LENGTH_SHORT).show()
 
                 }
@@ -95,7 +93,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener {
-               //
+                Log.d("RegisterActivity","Failed to select photo")
             }
     }
         var selectedPhotoUri: Uri? = null
@@ -108,21 +106,24 @@ class RegisterActivity : AppCompatActivity() {
             selectedPhotoUri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver,selectedPhotoUri)
 
-            val bitmapDrawable =BitmapDrawable(bitmap)
-            reg_profile_pic.setBackgroundDrawable(bitmapDrawable)
+            select_photo_imageview_register.setImageBitmap(bitmap)
+            reg_profile_pic.alpha =0f
+         //   val bitmapDrawable =BitmapDrawable(bitmap)
+           // reg_profile_pic.setBackgroundDrawable(bitmapDrawable)
         }
         }
         private fun saveUserToFireDatabase(profileImageUrl: String){
             val uid = FirebaseAuth.getInstance().uid ?:""
             val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-            val user = User(uid, username_edit_reg.text.toString())
+            val user = User(uid, username_edit_reg.text.toString(), profileImageUrl )
+
             ref.setValue(user)
                 .addOnSuccessListener {
                     Log.d( "RegisterActivity","Finally we save the user to Firebase Database")
-
-
+                }
+                .addOnFailureListener {
+                    Log.d("RegisterActivity","Failed to save user data to Firebase Database")
                 }
 
         }
-    }
-class User(val username: String, val profileImageUrl: String)
+    }class User(val uid: String, val username: String, val profileImageUrl: String)
