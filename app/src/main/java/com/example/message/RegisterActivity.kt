@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
             val password = password_edit_reg.text.toString()
             //If user left the fields empty
             if(email.isEmpty()||password.isEmpty()) {
-                Toast.makeText(this, "Please enter text in empty fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill the empty fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             //debugging messages
@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener {
                     Log.d("RegisterActivity", "failed to create user:${it.message}")
-                    Toast.makeText(this, "Please check the Mail ID and Password should be greater than 6 alphanumericals", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please check the Mail ID, and Password should have at least 6 alpha numerical", Toast.LENGTH_SHORT).show()
 
                 }
         }
@@ -120,6 +120,10 @@ class RegisterActivity : AppCompatActivity() {
             ref.setValue(user)
                 .addOnSuccessListener {
                     Log.d( "RegisterActivity","Finally we save the user to Firebase Database")
+
+                    val intent = Intent(this, LatestMessagesActivity::class.java)
+                    intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                 }
                 .addOnFailureListener {
                     Log.d("RegisterActivity","Failed to save user data to Firebase Database")
