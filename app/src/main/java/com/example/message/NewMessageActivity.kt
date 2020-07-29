@@ -15,6 +15,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_new_message.*
+import kotlinx.android.synthetic.main.activity_register.view.*
 import kotlinx.android.synthetic.main.user_row_newmessage.view.*
 
 class NewMessageActivity : AppCompatActivity() {
@@ -34,12 +35,16 @@ class NewMessageActivity : AppCompatActivity() {
         fetchUsers()
 
     }
+    companion object{
+        val USER_KEY="USER_KEY"
+    }
     private fun fetchUsers(){
         val ref =FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
 
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<GroupieViewHolder>()
+
                 p0.children.forEach{
                     //it.toString()
                     Log.d("NewMessage",it.toString())
@@ -49,8 +54,10 @@ class NewMessageActivity : AppCompatActivity() {
                     }
                 }
                 adapter.setOnItemClickListener{ item, view ->
-
+                    val userItem = item as UserItem
                     val intent = Intent(view.context, ChatLogActivity::class.java)
+                    //intent.putExtra(USER_KEY,userItem.user.username)
+                    intent.putExtra(USER_KEY,userItem.user)
                     startActivity(intent)
                     finish()
                 }

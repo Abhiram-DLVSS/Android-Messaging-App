@@ -10,20 +10,23 @@
         android:id="@+id/chat_from_row_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/text_round"
+        android:maxWidth="240dp"
         android:padding="16dp"
         android:text="This is my message"
-        android:maxWidth="240dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="103dp" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintEnd_toStartOf="@+id/chat_from_row_textview"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
