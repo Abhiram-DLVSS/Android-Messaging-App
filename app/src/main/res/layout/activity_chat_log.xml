@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     tools:context=".ChatLogActivity">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton/>
+
 
     <EditText
         android:id="@+id/editText_chat_log"

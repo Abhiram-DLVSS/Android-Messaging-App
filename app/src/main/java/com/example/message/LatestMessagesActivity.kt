@@ -12,12 +12,12 @@ class LatestMessagesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
 
-        verfiyUserIsLoggedIn()
+        verifyUserIsLoggedIn()
         }
-    private fun verfiyUserIsLoggedIn(){
+    private fun verifyUserIsLoggedIn(){
         val uid= FirebaseAuth.getInstance().uid
         if(uid==null) {
-            val intnet = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

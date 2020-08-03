@@ -2,12 +2,10 @@ package com.example.message
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_chat_log.*
-import com.example.message.R
 import models.User
 
 class ChatLogActivity : AppCompatActivity()
@@ -16,10 +14,11 @@ class ChatLogActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
 
-//    val username = intent.getStringExtra(NewMessageActivity.USER_KEY)
-        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
 
-        supportActionBar?.title = user.username
+//    val username = intent.getStringExtra(NewMessageActivity.USER_KEY)
+    //    val user =  intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
+
+        supportActionBar?.title = "user "//user.username
 
         val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -34,7 +33,7 @@ class ChatLogActivity : AppCompatActivity()
         adapter.add(ChatTOItem())
 
 
-        recylcerview_chat_log.adapter =adapter
+    recylcerview_chat_log.adapter =adapter
     }
 }
 
@@ -62,3 +61,4 @@ class ChatTOItem: Item<GroupieViewHolder>()
         return R.layout.chat_to_row
     }
 }
+
