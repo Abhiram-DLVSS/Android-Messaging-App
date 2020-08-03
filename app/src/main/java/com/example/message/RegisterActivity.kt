@@ -2,7 +2,6 @@ package com.example.message
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
+import models.User
 import java.util.*
 
 
@@ -115,7 +115,11 @@ class RegisterActivity : AppCompatActivity() {
         private fun saveUserToFireDatabase(profileImageUrl: String){
             val uid = FirebaseAuth.getInstance().uid ?:""
             val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-            val user = User(uid, username_edit_reg.text.toString(), profileImageUrl )
+            val user = User(
+                uid,
+                username_edit_reg.text.toString(),
+                profileImageUrl
+            )
 
             ref.setValue(user)
                 .addOnSuccessListener {

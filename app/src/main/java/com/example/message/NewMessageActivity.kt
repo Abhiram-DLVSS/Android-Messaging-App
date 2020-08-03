@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,8 +13,8 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_new_message.*
-import kotlinx.android.synthetic.main.activity_register.view.*
 import kotlinx.android.synthetic.main.user_row_newmessage.view.*
+import models.User
 
 class NewMessageActivity : AppCompatActivity() {
 
@@ -70,7 +68,7 @@ class NewMessageActivity : AppCompatActivity() {
     }
 
 }
-class UserItem(val user:User): Item<GroupieViewHolder>() {
+class UserItem(val user: User): Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
      //will be called in our list for each user object
     viewHolder.itemView.username_textview_new_message.text =user.username

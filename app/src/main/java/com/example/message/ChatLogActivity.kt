@@ -7,19 +7,19 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_chat_log.*
-
+import com.example.message.R
+import models.User
 
 class ChatLogActivity : AppCompatActivity()
 {
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
 
-        supportActionBar?.title= "Chat log"
+//    val username = intent.getStringExtra(NewMessageActivity.USER_KEY)
+        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
 
-        val username= intent.getStringArrayExtra(NewMessageActivity.USER_KEY)
-        supportActionBar?.title = username
+        supportActionBar?.title = user.username
 
         val adapter = GroupAdapter<GroupieViewHolder>()
 
