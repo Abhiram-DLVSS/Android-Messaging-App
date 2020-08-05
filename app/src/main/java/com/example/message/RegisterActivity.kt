@@ -1,14 +1,16 @@
 package com.example.message
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -40,8 +42,15 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
                     //ele if success
+                    Snackbar.make(
+                        linearlayout,"Loading....",Snackbar.LENGTH_LONG
+                    ).show()
+                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
                     Log.d("RegisterActivity", "Successful created using uid: ${it?.result?.user?.uid}")
+                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
                     uploadImageToFirebaseStorage()
+                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
+
                 }
                 .addOnFailureListener {
                     Log.d("RegisterActivity", "failed to create user:${it.message}")
@@ -61,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("RegisterActivity","Try to show login activity")
             //Launch the login activty
             val intent = Intent( this, LoginActivity::class.java)
-            startActivity(intent)
+            startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             }
             // Redirecting to github when taped on Privacy policy
             val privacyPolicy = this.findViewById<TextView>(R.id.privacy_policy)
@@ -127,7 +136,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     val intent = Intent(this, LatestMessagesActivity::class.java)
                     intent.flags =Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
+                    startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
                 }
                 .addOnFailureListener {
                     Log.d("RegisterActivity","Failed to save user data to Firebase Database")
