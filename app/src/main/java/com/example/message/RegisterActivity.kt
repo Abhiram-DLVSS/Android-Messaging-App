@@ -42,14 +42,15 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
                     //ele if success
+                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
                     Snackbar.make(
-                        linearlayout,"Loading....",Snackbar.LENGTH_LONG
+                        linearlayout,"Registering.....",Snackbar.LENGTH_LONG
                     ).show()
-                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
                     Log.d("RegisterActivity", "Successful created using uid: ${it?.result?.user?.uid}")
-                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
                     uploadImageToFirebaseStorage()
-                    Toast.makeText(this, "Hold tight, Loading the app", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
 
                 }
                 .addOnFailureListener {
