@@ -1,4 +1,4 @@
-package com.example.message
+package com.example.message.registerlogin
 
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +7,10 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.message.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+import com.example.message.messages.LatestMessagesActivity
 
 class LoginActivity:AppCompatActivity() {
 

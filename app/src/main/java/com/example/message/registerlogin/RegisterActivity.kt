@@ -1,4 +1,4 @@
-package com.example.message
+package com.example.message.registerlogin
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -10,12 +10,14 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.message.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
-import models.User
+import com.example.message.models.User
+import com.example.message.messages.LatestMessagesActivity
 import java.util.*
 
 
@@ -145,6 +147,3 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
-class User(val uid: String, val username: String, val profileImageUrl: String){
-    constructor(): this("", "","")
-}

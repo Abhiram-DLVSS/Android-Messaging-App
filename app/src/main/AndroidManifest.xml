@@ -14,7 +14,7 @@
 
 
 
-        <activity android:name=".LatestMessagesActivity">
+        <activity android:name=".messages.LatestMessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,28 +24,28 @@
 
 
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.message.registerlogin.RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
 
 
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.message.registerlogin.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        <activity android:name=".NewMessageActivity">
+        <activity android:name=".messages.NewMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LatestMessagesActivity" />
+                android:value=".messages.LatestMessagesActivity" />
         </activity>
 
 
 
-        <activity android:name=".ChatLogActivity">
+        <activity android:name=".messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LatestMessagesActivity" />
+                android:value=".messages.LatestMessagesActivity" />
         </activity>
 
     </application>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#D2000000"
     android:id="@+id/linearlayout"
-    tools:context=".RegisterActivity">
+    tools:context="com.example.message.registerlogin.RegisterActivity">
 
     <EditText
         android:id="@+id/email_edit_reg"

@@ -1,9 +1,10 @@
-package com.example.message
+package com.example.message.messages
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.message.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -14,7 +15,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.user_row_newmessage.view.*
-import models.User
+import com.example.message.models.User
 
 class NewMessageActivity : AppCompatActivity() {
 
@@ -50,8 +51,7 @@ class NewMessageActivity : AppCompatActivity() {
                     val userItem = item as UserItem
 
                     val intent = Intent(view.context, ChatLogActivity::class.java)
-//
-                    intent.putExtra(USER_KEY, userItem.user.username)
+                    intent.putExtra(USER_KEY, userItem.user)
                     startActivity(intent)
 
                     finish()
