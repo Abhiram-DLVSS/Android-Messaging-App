@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_chat_log.*
 import com.example.message.models.ChatMessage
 import com.example.message.models.User
 import com.example.message.views.ChatFromItem
-import com.example.message.views.ChatTOItem
+import com.example.message.views.ChatToItem
 
 
 class ChatLogActivity : AppCompatActivity() {
@@ -48,7 +48,10 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+
+        val fromId = FirebaseAuth.getInstance().uid
+        val toId = toUser?.uid
+        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
 
         ref.addChildEventListener(object: ChildEventListener {
 
@@ -63,7 +66,7 @@ class ChatLogActivity : AppCompatActivity() {
                         adapter.add(ChatFromItem(chatMessage.text, currentUser))
                     }
                     else{
-                    adapter.add(ChatTOItem(chatMessage.text, toUser!!))
+                    adapter.add(ChatToItem(chatMessage.text, toUser!!))
                     }
                 }
 
@@ -100,13 +103,22 @@ class ChatLogActivity : AppCompatActivity() {
 
         if (fromId == null) return
 
-        val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+//        val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+
+        val toreference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
+
 
         val chatMessage = ChatMessage(reference.key!!, text, fromId, toId, System.currentTimeMillis() / 1000)
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved our chat message: ${reference.key}")
+                editText_chat_log.text.clear()
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount-1)
             }
+
+        toreference.setValue(chatMessage)
+
     }
 }
 

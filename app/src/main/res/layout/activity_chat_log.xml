@@ -44,7 +44,6 @@
         android:layout_width="399dp"
         android:layout_height="539dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
