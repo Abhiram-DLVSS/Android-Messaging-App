@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.message.R
-import com.google.android.material.snackbar.Snackbar
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -43,14 +43,11 @@ class RegisterActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
-                    //ele if success
-                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
-                    Snackbar.make(
-                        linearlayout,"Registering.....",Snackbar.LENGTH_LONG
-                    ).show()
+                    //else if success
+
                     Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
                     Log.d("RegisterActivity", "Successful created using uid: ${it?.result?.user?.uid}")
-                    Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
                     uploadImageToFirebaseStorage()
                     Toast.makeText(this, "Registering....", Toast.LENGTH_SHORT).show()
 
