@@ -3,6 +3,7 @@ package com.example.message.messages
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.message.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -16,6 +17,7 @@ import com.example.message.models.ChatMessage
 import com.example.message.models.User
 import com.example.message.views.ChatFromItem
 import com.example.message.views.ChatToItem
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class ChatLogActivity : AppCompatActivity() {
@@ -43,7 +45,12 @@ class ChatLogActivity : AppCompatActivity() {
 
         send.setOnClickListener {
             Log.d(TAG, "Attempt to send message....")
-            performSendMessage()
+            val password = editText_chat_log.text.toString()
+            if (password.isEmpty()) {
+                Toast.makeText(this, "No spamming", Toast.LENGTH_SHORT).show()
+            }
+            else{
+            performSendMessage()}
         }
     }
 

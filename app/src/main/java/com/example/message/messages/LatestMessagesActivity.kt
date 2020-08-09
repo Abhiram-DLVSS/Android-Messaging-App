@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.message.R
 import com.example.message.models.ChatMessage
 import com.example.message.models.User
@@ -139,6 +140,7 @@ class LatestMessagesActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                Toast.makeText(this, "Signing Out", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
         }

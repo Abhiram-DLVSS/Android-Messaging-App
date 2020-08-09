@@ -23,7 +23,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:text="username"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/message_textview_latest_message"
         app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
@@ -37,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:text="Latest Message"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,5 +46,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
         app:layout_constraintTop_toBottomOf="@+id/username_textview_latest_message" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="404dp"
+        android:layout_height="2dp"
+        android:background="#6acdb5"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
